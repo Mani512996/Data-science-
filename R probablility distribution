@@ -1,0 +1,15 @@
+d = rep(c("MISS","NO_MISS"),times=c(1,199)) #Creating a sample dataset of 200 outcomes, with 
+only 1 event of Mis-routing
+#event = sample(d,5,replace=TRUE) #Sample of 5 call scenarios
+event_1000_rep = replicate(1000,sample(d,5,replace=TRUE)) #Repeating experiment 1000 
+times
+i = 1
+z=0
+while(i<=1000)
+{
+ if("MISS" %in% event_1000_rep[,i]) #Checking if we have even one MISS among the 5 calls
+ z=z+1
+ i=i+1
+}
+p = z/1000
+cat("Probability",p
